@@ -1,0 +1,15 @@
+[Unit]
+Description=SysMon tray system monitor
+After=graphical-session.target
+PartOf=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 %h/DEVELOPMENT/sysmon/sysmon.py
+Restart=on-failure
+RestartSec=3
+Slice=session.slice
+
+[Install]
+WantedBy=graphical-session.target
